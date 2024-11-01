@@ -56,13 +56,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.workflow_run.head_sha }}
 
       - uses: superfly/flyctl-actions/setup-flyctl@master
 
       - run: >
           flyctl deploy
-          --image registry.fly.io/ildsk:${{ github.event.workflow_run.head_sha }}
+          --image registry.fly.io/ildsk:${{ github.sha }}
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
