@@ -35,6 +35,12 @@ func Page(props html.PageProps, children ...Node) Node {
 			Link(Rel("stylesheet"), Href(appCSSPath)),
 			Script(Src(htmxJSPath), Defer()),
 			Script(Src(appJSPath), Defer()),
+			Raw(`<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Ildsk">
+<link rel="manifest" href="/manifest.json">`),
 		},
 		Body: []Node{Class("bg-gray-900 text-white font-serif"),
 			Div(Class("min-h-screen flex flex-col justify-between bg-white"),
