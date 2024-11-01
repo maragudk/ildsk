@@ -48,7 +48,7 @@ func TextareaPartial(name, value string) Node {
 			Label(For(name+"-area"), Class("block text-sm/6 font-medium text-gray-900"), Text(name)),
 			Div(Class("mt-2"),
 				Textarea(Rows("10"), Cols("40"), Name(name), ID(name+"-area"), Placeholder(placeholder),
-					Class("block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm/6"),
+					Class("block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm/6 font-sans"),
 					Text(value)),
 			),
 		),
