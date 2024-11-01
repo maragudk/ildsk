@@ -39,30 +39,34 @@ func Translate(r *Router, log *snorkel.Logger, llm translator) {
 				return nil, errors.New("not an htmx request")
 			}
 
-			switch hx.GetTarget(r.Header) {
+			var to model.Language
+			var in, name string
+
+			target := hx.GetTarget(r.Header)
+			switch target {
 			case "ildsk":
-				log.Event("Translating", 1, "to", hx.GetTarget(r.Header), "text", req.Dansk)
-
-				translated, err := llm.Translate(r.Context(), model.LanguageIldsk, req.Dansk)
-				if err != nil {
-					return html.ErrorPage(html.Page), err
-				}
-
-				return html.TextareaPartial("Ildsk", translated), nil
+				to = model.LanguageIldsk
+				name = "Ildsk"
+				in = req.Dansk
 
 			case "dansk":
-				log.Event("Translating", 1, "to", hx.GetTarget(r.Header), "text", req.Ildsk)
+				to = model.LanguageDanish
+				name = "Dansk"
+				in = req.Ildsk
 
-				translated, err := llm.Translate(r.Context(), model.LanguageDanish, req.Ildsk)
-				if err != nil {
-					return html.ErrorPage(html.Page), err
-				}
-
-				return html.TextareaPartial("Dansk", translated), nil
 			default:
-				log.Event("Unknown target", 1, "target", hx.GetTarget(r.Header))
-				return nil, errors.New("unknown target")
+				log.Event("Unknown target", 1, "target", target)
+				return nil, errors.New("unknown target " + target)
 			}
+
+			log.Event("Translating", 1, "to", to, "in", in)
+			out, err := llm.Translate(r.Context(), to, in)
+			if err != nil {
+				return html.ErrorPage(html.Page), err
+			}
+			log.Event("Translated", 1, "to", to, "in", in, "out", out)
+
+			return html.TextareaPartial(name, out), nil
 		})(w, r)
 	}))
 }
