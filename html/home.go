@@ -13,30 +13,30 @@ import (
 func HomePage(props PageProps) Node {
 	props.Title = "Ildsk! 🔥"
 
-	return page(props,
+	return Page(props,
 		Div(Class("prose prose-amber prose-lg md:prose-xl"),
 			H1(Text("Ildsk! 🔥")),
 
 			Form(Method("post"), Action("/translate"),
-				Div(Class("flex flex-col sm:flex-row gap-8 align-center justify-center"),
-					Div(Class("space-y-8"),
+				Div(Class("flex flex-col sm:flex-row gap-16 align-center justify-center"),
+					Div(Class("flex flex-col space-y-8"),
 						Div(ID("dansk"),
 							TextareaPartial("Dansk", ""),
 						),
 
 						Button(Type("submit"), ID("translate-to-ildsk"),
 							Class("rounded-md bg-amber-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"),
-							Text("Oversæt til ildsk"), hx.Post("/translate"), hx.Target("#ildsk")),
+							Text("Oversæt til ildsk 🔥"), hx.Post("/translate"), hx.Target("#ildsk")),
 					),
 
-					Div(Class("space-y-8"),
+					Div(Class("flex flex-col space-y-8"),
 						Div(ID("ildsk"),
 							TextareaPartial("Ildsk", ""),
 						),
 
 						Button(Type("submit"), ID("translate-to-dansk"),
 							Class("rounded-md bg-amber-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"),
-							Text("Oversæt til dansk"), hx.Post("/translate"), hx.Target("#dansk")),
+							Text("Oversæt til dansk 🇩🇰"), hx.Post("/translate"), hx.Target("#dansk")),
 					),
 				),
 			),

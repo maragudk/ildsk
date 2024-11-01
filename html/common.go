@@ -12,19 +12,14 @@ import (
 	. "maragu.dev/gomponents"
 	. "maragu.dev/gomponents/components"
 	. "maragu.dev/gomponents/html"
+	"maragu.dev/goo/html"
 )
 
 var hashOnce sync.Once
 var appCSSPath, appJSPath, htmxJSPath string
 
-// PageProps are properties for the [page] component.
-type PageProps struct {
-	Title       string
-	Description string
-}
-
-// page layout with header, footer, and container to restrict width and set base padding.
-func page(props PageProps, children ...Node) Node {
+// Page layout with header, footer, and container to restrict width and set base padding.
+func Page(props html.PageProps, children ...Node) Node {
 	// Hash the paths for easy cache busting on changes
 	hashOnce.Do(func() {
 		appCSSPath = getHashedPath("public/styles/app.css")
