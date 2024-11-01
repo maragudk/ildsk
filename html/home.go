@@ -1,49 +1,60 @@
 package html
 
 import (
-	"time"
+	"fmt"
+	"strings"
 
 	. "maragu.dev/gomponents"
 	hx "maragu.dev/gomponents-htmx"
 	. "maragu.dev/gomponents/html"
-
-	"app/model"
 )
 
 // HomePage is the front page of the app.
-func HomePage(props PageProps, things []model.Thing, now time.Time) Node {
-	props.Title = "Home"
+func HomePage(props PageProps) Node {
+	props.Title = "Ildsk! 🔥"
 
 	return page(props,
-		Div(Class("prose prose-indigo prose-lg md:prose-xl"),
-			H1(Text("Welcome to the gomponents starter kit")),
+		Div(Class("prose prose-amber prose-lg md:prose-xl"),
+			H1(Text("Ildsk! 🔥")),
 
-			P(Text("It uses gomponents, HTMX, and Tailwind CSS, and you can use it as a template for your new app. 😎")),
+			Form(Method("post"), Action("/translate"),
+				Div(Class("flex flex-col sm:flex-row gap-8 align-center justify-center"),
+					Div(Class("space-y-8"),
+						Div(ID("dansk"),
+							TextareaPartial("Dansk", ""),
+						),
 
-			P(A(Href("https://github.com/maragudk/gomponents-starter-kit"), Text("See gomponents-starter-kit on GitHub"))),
+						Button(Type("submit"), ID("translate-to-ildsk"),
+							Class("rounded-md bg-amber-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"),
+							Text("Oversæt til ildsk"), hx.Post("/translate"), hx.Target("#ildsk")),
+					),
 
-			H2(Text("Try HTMX")),
+					Div(Class("space-y-8"),
+						Div(ID("ildsk"),
+							TextareaPartial("Ildsk", ""),
+						),
 
-			Button(
-				Class("rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"),
-				Text("Get things with HTMX"), hx.Get("/"), hx.Target("#things")),
-
-			Div(ID("things"),
-				ThingsPartial(things, now),
+						Button(Type("submit"), ID("translate-to-dansk"),
+							Class("rounded-md bg-amber-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"),
+							Text("Oversæt til dansk"), hx.Post("/translate"), hx.Target("#dansk")),
+					),
+				),
 			),
 		),
 	)
 }
 
-// ThingsPartial is a partial for showing a list of things, returned directly if the request is an HTMX request,
-// and used in [HomePage].
-func ThingsPartial(things []model.Thing, now time.Time) Node {
+func TextareaPartial(name, value string) Node {
+	placeholder := fmt.Sprintf("Skriv noget på %v her…", strings.ToLower(name))
+
 	return Group{
-		P(Textf("Here are %v things from the mock database (updated %v):", len(things), now.Format(time.TimeOnly))),
-		Ul(
-			Map(things, func(t model.Thing) Node {
-				return Li(Text(t.Name))
-			}),
+		Div(
+			Label(For(name+"-area"), Class("block text-sm/6 font-medium text-gray-900"), Text(name)),
+			Div(Class("mt-2"),
+				Textarea(Rows("10"), Cols("40"), Name(name), ID(name+"-area"), Placeholder(placeholder),
+					Class("block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm/6"),
+					Text(value)),
+			),
 		),
 	}
 }

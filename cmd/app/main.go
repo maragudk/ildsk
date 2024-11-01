@@ -11,7 +11,6 @@ import (
 	"maragu.dev/env"
 
 	"app/http"
-	"app/sql"
 )
 
 func main() {
@@ -35,18 +34,8 @@ func start(log *slog.Logger) error {
 	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGTERM, syscall.SIGINT)
 	defer stop()
 
-	// Set up the database, which is injected as a dependency into the HTTP server
-	// Here, the database is just a fake one.
-	db := sql.NewDatabase(sql.NewDatabaseOptions{
-		Log: log,
-	})
-	if err := db.Connect(); err != nil {
-		return err
-	}
-
 	// Set up the HTTP server, injecting the database and logger
 	s := http.NewServer(http.NewServerOptions{
-		DB:  db,
 		Log: log,
 	})
 

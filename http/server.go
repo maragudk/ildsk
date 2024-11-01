@@ -10,20 +10,16 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
-
-	"app/sql"
 )
 
 // Server holds dependencies for the HTTP server as well as the HTTP server itself.
 type Server struct {
-	db     *sql.Database
 	log    *slog.Logger
 	mux    chi.Router
 	server *http.Server
 }
 
 type NewServerOptions struct {
-	DB  *sql.Database
 	Log *slog.Logger
 }
 

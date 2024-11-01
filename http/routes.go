@@ -18,6 +18,7 @@ func (s *Server) setupRoutes() {
 			Static(r)
 		})
 
-		Home(r, s.db)
+		Home(r)
+		Translate(r, s.log, nil)
 	})
 }

@@ -35,13 +35,13 @@ func page(props PageProps, children ...Node) Node {
 	return HTML5(HTML5Props{
 		Title:       props.Title,
 		Description: props.Description,
-		Language:    "en",
+		Language:    "da",
 		Head: []Node{
 			Link(Rel("stylesheet"), Href(appCSSPath)),
 			Script(Src(htmxJSPath), Defer()),
 			Script(Src(appJSPath), Defer()),
 		},
-		Body: []Node{Class("bg-indigo-600 text-gray-900"),
+		Body: []Node{Class("bg-gray-900 text-white"),
 			Div(Class("min-h-screen flex flex-col justify-between bg-white"),
 				header(),
 				Div(Class("grow"),
@@ -57,12 +57,12 @@ func page(props PageProps, children ...Node) Node {
 
 // header bar with logo and navigation.
 func header() Node {
-	return Div(Class("bg-indigo-600 text-white shadow"),
+	return Div(Class("bg-gray-800 text-white shadow"),
 		container(true, false,
 			Div(Class("h-16 flex items-center justify-between"),
 				A(Href("/"), Class("inline-flex items-center text-xl font-semibold"),
-					Img(Src("/images/logo.png"), Alt("Logo"), Class("h-12 w-auto bg-white rounded-full mr-4")),
-					Text("Home"),
+					Img(Src("/images/logo.jpg"), Alt("Logo"), Class("h-12 w-auto bg-white rounded-full mr-4")),
+					Text("Forside"),
 				),
 			),
 		),
@@ -83,10 +83,10 @@ func container(padX, padY bool, children ...Node) Node {
 
 // footer with a link to the gomponents website.
 func footer() Node {
-	return Div(Class("bg-indigo-600 text-white"),
+	return Div(Class("bg-gray-800 text-white"),
 		container(true, false,
 			Div(Class("h-16 flex items-center justify-center"),
-				A(Href("https://www.gomponents.com"), Text("www.gomponents.com")),
+				A(Href("https://evaehler.dk"), Text("Eva Ehler")),
 			),
 		),
 	)

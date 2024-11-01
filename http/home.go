@@ -1,9 +1,9 @@
 package http
 
 import (
-	"context"
+	"errors"
+	"log/slog"
 	"net/http"
-	"time"
 
 	"github.com/go-chi/chi/v5"
 	. "maragu.dev/gomponents"
@@ -11,25 +11,32 @@ import (
 	ghttp "maragu.dev/gomponents/http"
 
 	"app/html"
-	"app/model"
 )
 
-type thingsGetter interface {
-	GetThings(ctx context.Context) ([]model.Thing, error)
+type translator interface {
 }
 
-// Home handler for the home page, as well as HTMX partial for getting things.
-func Home(r chi.Router, db thingsGetter) {
+// Home handler for the home page.
+func Home(r chi.Router) {
 	r.Get("/", ghttp.Adapt(func(w http.ResponseWriter, r *http.Request) (Node, error) {
-		things, err := db.GetThings(r.Context())
-		if err != nil {
-			return nil, err
+		return html.HomePage(html.PageProps{}), nil
+	}))
+}
+
+func Translate(r chi.Router, log *slog.Logger, llm translator) {
+	r.Post("/translate", ghttp.Adapt(func(w http.ResponseWriter, r *http.Request) (Node, error) {
+		if !hx.IsRequest(r.Header) {
+			return nil, errors.New("not an htmx request")
 		}
 
-		if hx.IsRequest(r.Header) {
-			return html.ThingsPartial(things, time.Now()), nil
+		switch hx.GetTarget(r.Header) {
+		case "ildsk":
+			return html.TextareaPartial("Ildsk", "BRAWAWWAW"), nil
+		case "dansk":
+			return html.TextareaPartial("Dansk", "Hej med dig"), nil
+		default:
+			log.Info("Unknown target", "target", hx.GetTarget(r.Header))
+			return nil, errors.New("unknown target")
 		}
-
-		return html.HomePage(html.PageProps{}, things, time.Now()), nil
 	}))
 }
