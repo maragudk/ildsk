@@ -8,6 +8,10 @@ primary_region = 'arn'
 
 [build]
 
+[env]
+  LLM_URL = 'https://api.openai.com/v1'
+  LLM_MODEL = 'gpt-4o'
+
 [http_service]
   internal_port = 8080
   force_https = true

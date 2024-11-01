@@ -1,6 +1,7 @@
 package http
 
 import (
+	"context"
 	"errors"
 	"net/http"
 
@@ -12,6 +13,7 @@ import (
 	"maragu.dev/snorkel"
 
 	"app/html"
+	"app/model"
 )
 
 // Home handler for the home page.
@@ -22,9 +24,12 @@ func Home(r *Router) {
 }
 
 type translator interface {
+	Translate(ctx context.Context, to model.Language, text string) (string, error)
 }
 
 type TranslateRequest struct {
+	Dansk string
+	Ildsk string
 }
 
 func Translate(r *Router, log *snorkel.Logger, llm translator) {
@@ -36,9 +41,24 @@ func Translate(r *Router, log *snorkel.Logger, llm translator) {
 
 			switch hx.GetTarget(r.Header) {
 			case "ildsk":
-				return html.TextareaPartial("Ildsk", "BRAWAWWAW"), nil
+				log.Event("Translating", 1, "to", hx.GetTarget(r.Header), "text", req.Dansk)
+
+				translated, err := llm.Translate(r.Context(), model.LanguageIldsk, req.Dansk)
+				if err != nil {
+					return html.ErrorPage(html.Page), err
+				}
+
+				return html.TextareaPartial("Ildsk", translated), nil
+
 			case "dansk":
-				return html.TextareaPartial("Dansk", "Hej med dig"), nil
+				log.Event("Translating", 1, "to", hx.GetTarget(r.Header), "text", req.Ildsk)
+
+				translated, err := llm.Translate(r.Context(), model.LanguageDanish, req.Ildsk)
+				if err != nil {
+					return html.ErrorPage(html.Page), err
+				}
+
+				return html.TextareaPartial("Dansk", translated), nil
 			default:
 				log.Event("Unknown target", 1, "target", hx.GetTarget(r.Header))
 				return nil, errors.New("unknown target")
