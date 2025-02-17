@@ -6,7 +6,7 @@ require (
 	maragu.dev/gomponents v1.0.0
 	maragu.dev/gomponents-htmx v0.6.1
 	maragu.dev/goo v0.0.0-20241031135611-2656dbfcbc0d
-	maragu.dev/httph v0.3.3
+	maragu.dev/httph v0.3.5
 	maragu.dev/snorkel v0.4.1
 )
 

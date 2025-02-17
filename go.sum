@@ -230,8 +230,8 @@ maragu.dev/gomponents-htmx v0.6.1 h1:vXXOkvqEDKYxSwD1UwqmVp12YwFSuM6u8lsRn7Evyng
 maragu.dev/gomponents-htmx v0.6.1/go.mod h1:51nXX+dTGff3usM7AJvbeOcQjzjpSycod+60CYeEP/M=
 maragu.dev/goo v0.0.0-20241031135611-2656dbfcbc0d h1:s0TYtmg9lXCX//glpWNuSnlrfFQbsVH1CZN6+URDVzE=
 maragu.dev/goo v0.0.0-20241031135611-2656dbfcbc0d/go.mod h1:dPSlLwlj6+AIVhX/MnoHlVL3f/NRPpdmTvIYa1Z6UzY=
-maragu.dev/httph v0.3.3 h1:YfOKkqwmAJykOENmxeoCmYY+firwPEpv4aIY7gDCTsc=
-maragu.dev/httph v0.3.3/go.mod h1:EaoadbqczoICEGrtKrtlb1KD6gj6m65en3Wt2OchlJ0=
+maragu.dev/httph v0.3.5 h1:g0ebwFA8Hv+UOoJNcYdHy9gqPLWHTf2kHXEq3Gma3Ac=
+maragu.dev/httph v0.3.5/go.mod h1:DGE2xtKBbL/ukcCGK/IvmUA1ni6ylusjWBgAMkCvTnc=
 maragu.dev/is v0.2.0 h1:poeuVEA5GG3vrDpGmzo2KjWtIMZmqUyvGnOB0/pemig=
 maragu.dev/is v0.2.0/go.mod h1:bviaM5S0fBshCw7wuumFGTju/izopZ/Yvq4g7Klc7y8=
 maragu.dev/migrate v0.6.0 h1:gJLAIVaRh9z9sN55Q2sWwScpEH+JsT6N0L1DnzedXFE=
