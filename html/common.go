@@ -88,7 +88,7 @@ func footer() Node {
 		container(true, false,
 			Div(Class("h-16 flex items-center justify-center space-x-8"),
 				A(Class("hover:text-amber-500"), Href("https://evaehler.dk"), Text("Sprogdesign af Eva Ehler")),
-				A(Class("hover:text-amber-500"), Href("https://www.maragu.dk"), Text("Software af maragu")),
+				A(Class("hover:text-amber-500"), Href("https://www.maragu.dev"), Text("Software af maragu")),
 			),
 		),
 	)

@@ -10,7 +10,7 @@ import (
 	"app/model"
 )
 
-//go:embed prompts/system.txt
+//go:embed prompts/system.md
 var system string
 
 func (c *Client) Translate(ctx context.Context, to model.Language, text string) (string, error) {
