@@ -38,6 +38,110 @@ darash: portal
 vashir era: vent på mig
 koraash qu Mira: beskyt min ven Mira
 tiras ignia: styrkens ild
+isha tar: velkommen
+mahrin qua: farvel, på gensyn
+ravon tarak: vær hilset
+kashira: tak
+rakhan kashira: tusind tak
+shakara: lyt til mig
+manukha qu era: min menneskeven
+isha tar: velkommen
+mahrin qua: farvel, på gensyn
+ravon tarak: vær hilset
+kashira: tak
+rakhan kashira: tusind tak
+shakara: lyt til mig
+manukha qu era: min menneskeven
+rashar: flyv
+koraash: beskyt
+vashir: vent
+dorin: spis
+rikhan: lad os gå
+shakarash: lyt
+karashan: lær
+ravonash: hvæs/snerr (kan bruges som et advarende udtryk)
+tasharak: brænd
+varaak: stor
+tashara: flammende
+nyasha: kold
+miraak: blid
+aqualin: stærk som vandet
+kasharak: skinnende
+darashin: mystisk
+qu: ven
+tarash: himmel
+ignia: ild
+nuran: stjerne
+darash: portal
+milvus: drage
+rukhan: rytter
+ma’kara: moder
+anwa: livets melodi (forbundethed)
+vashir era: vent på mig
+koraash qu Mira: beskyt min ven Mira
+tiras ignia: styrkens ild
+rakhan erash vira mirak: fortsæt - vi kan godt
+sira miraan era: jeg indgyder mod
+viira milvus, anwa tarash, tiras eraash: vi er forenet med dragerne, magiens stjerner, vores styrke
+isha tar: velkommen  
+mahrin qua: farvel, på gensyn  
+ravon tarak: vær hilset  
+kashira: tak  
+rakhan kashira: tusind tak  
+manukha qu era: min menneskeven  
+shakara: lyt til mig  
+vashir era: vent på mig  
+kara viira quaan?: Skal vi være venner?  
+shakara era?: Lytter du til mig?  
+viiraash era?: Er du okay?  
+rakhan eraash?: Kan vi klare det?  
+raak!: Ja!  
+nyrashan: Nej!  
+rashar: flyv  
+koraash: beskyt  
+vashir: vent  
+dorin: spis  
+rikhan: lad os gå  
+tasharak: brænd  
+ravonash: hvæs/snerr (advarende)  
+shakarash: lyt  
+karashan: lær  
+miraan: mod  
+ashkai: venskab  
+nyrash: frygt  
+lunaraa: ro  
+ravirash: glæde  
+nyashira: sorg  
+tirasan: kraftfuld  
+rakhanash: stolt  
+viiraash: træt  
+varaak: stor  
+tashara: flammende  
+nyasha: kold  
+miraak: blid  
+aqualin: stærk som vandet  
+kasharak: skinnende  
+darashin: mystisk  
+igniash: varm  
+erash: en  
+tarash: to  
+nuranash: tre  
+darashan: fire  
+milvash: fem  
+ignia: rød  
+varaash: gul  
+aqualash: blå  
+nyarash: sort  
+lunash: hvid  
+sira miraan era: jeg indgyder mod  
+viira milvus, anwa tarash, tiras eraash: vi er forenet med dragerne, magiens stjerner, vores styrke  
+koraash ma’kara anwa: beskyt Moder Jord  
+rakhan erash vira mirak: fortsæt - vi kan godt  
+dorin ignia!: Spis ilden! (Kan bruges legende som “spis noget stærkt”)  
+rashar quaan!: Flyv, venner!  
+varaak ignia!: Mega meget ild!  
+nyasha mirash!: Wow, det er koldt!  
+
 ```
 
 ## Grammatik
