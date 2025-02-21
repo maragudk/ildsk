@@ -45,7 +45,7 @@ func Page(props html.PageProps, children ...Node) Node {
 		Body: []Node{Class("bg-gray-900 text-white font-serif"),
 			Div(Class("min-h-screen flex flex-col justify-between bg-white"),
 				header(),
-				Div(Class("grow"),
+				Div(Class("grow text-gray-900"),
 					container(true, true,
 						Group(children),
 					),
@@ -58,7 +58,7 @@ func Page(props html.PageProps, children ...Node) Node {
 
 // header bar with logo and navigation.
 func header() Node {
-	return Div(Class("bg-gray-800 text-white shadow"),
+	return Div(Class("bg-gray-800 text-white shadow-sm"),
 		container(true, false,
 			Div(Class("h-16 flex items-center justify-between"),
 				A(Href("/"), Class("inline-flex items-center text-xl font-semibold hover:text-amber-500"),
